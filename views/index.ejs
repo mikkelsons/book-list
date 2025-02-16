@@ -1,0 +1,99 @@
+<%- include("partials/header.ejs") %>
+
+<div class="content">
+  <h2 id="welcome">Welcome to my booklist!</h2>
+  <p id="intro">
+    This is a list and short description of some of the books I have read.
+  </p>
+
+  <a id="new-book" href="/new" class="button" hidden>Add New Book</a>
+
+  <div class="container">
+    <ul id="postsList">
+      <% books.forEach(book => { %>
+        <li>
+          <div id="book-thumbnail">
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="">
+          </div> 
+          <h2>
+            <%= book.book_title %>
+          </h2>
+          <p class="author">
+            by <%= book.author || 'Unknown Author' %>
+          </p>
+          <small>
+            <%= book.date %>
+          </small>
+          <p class="book-description">
+            <%- book.book_description.replace(/\n/g, '<br>') %>             
+          </p>
+          <a class="edit" href="/edit/<%= book.id %>" hidden="true">Edit</a>
+          <form action="/delete/<%= book.id %>" method="POST" hidden class="delete" 
+            onsubmit="return confirm('Are you sure you want to delete <%= book.book_title %>?');">
+            <button type="submit" class="delete-button">Delete</button>
+          </form>         
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</div>
+<div class="edit-button">
+  <button class="button" onclick="handler()">Edit posts</button>
+</div>
+
+<script>
+  function handler() {
+    document.querySelectorAll(".edit").forEach(link => link.toggleAttribute("hidden"));
+    document.querySelectorAll(".delete").forEach(form => form.toggleAttribute("hidden"));
+    document.querySelector("#new-book").toggleAttribute("hidden");
+  }
+
+  function updateSortLinks() {
+    const sortLinks = document.querySelectorAll('.sort-link');
+    const currentSort = {
+      field: '<%= currentSort ? currentSort.field : "id" %>',
+      order: '<%= currentSort ? currentSort.order : "ASC" %>'
+    };
+    const sortingApplied = <%= sortingApplied %>;
+
+    // Handle ID link (Home)
+    const idLink = document.querySelector('a[href="/"]');
+    if (idLink) {
+      idLink.classList.remove('active', 'asc', 'desc');
+      idLink.href = '/?sortField=id&sortOrder=ASC';
+      if (currentSort.field === 'id') {
+        if (sortingApplied) {
+          idLink.classList.add('active');
+          idLink.classList.add(currentSort.order.toLowerCase());
+          idLink.href = `/?sortField=id&sortOrder=${currentSort.order === 'ASC' ? 'DESC' : 'ASC'}`;
+        }
+      } else {
+        // Reset to original state if not active
+        idLink.textContent = idLink.dataset.originalText || 'Home';
+      }
+    }
+
+    // Handle other sort links
+    sortLinks.forEach(link => {
+      const field = link.dataset.field;
+      link.classList.remove('active', 'asc', 'desc');
+      
+      if (!link.dataset.originalText) {
+        link.dataset.originalText = link.textContent.trim();
+      }
+
+      if (field === currentSort.field) {
+        link.classList.add('active');
+        link.classList.add(currentSort.order.toLowerCase());
+        link.href = `/?sortField=${field}&sortOrder=${currentSort.order === 'ASC' ? 'DESC' : 'ASC'}`;
+      } else {
+        link.href = `/?sortField=${field}&sortOrder=ASC`;
+        link.textContent = link.dataset.originalText;
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateSortLinks);
+</script>
+
+<%- include("partials/footer.ejs") %>

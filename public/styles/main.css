@@ -1,0 +1,400 @@
+body {
+    background-color: #D6EFD8;
+    background-image: url("../images/brown-classic-books.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    min-height: 150vh;
+}
+
+@font-face {
+    font-family: amsterdam;
+    src: url(../fonts/amsterdam-variation-3.ttf);
+  }
+
+header {
+    /* background-color: rgb(98, 98, 98); */
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    min-width: 50%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+
+.nav {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-around;
+    list-style: none;
+    font-family: Libre Baskerville;
+}
+
+p,
+input,
+textarea {
+  margin-bottom: 20px;
+}
+
+small {
+  display: block;
+  margin-bottom: 20px;
+  color: #888;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+}
+
+.container a,
+button {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.full-width {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.container a,
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+a.edit {
+  background-color: #007bff;
+  /* margin-right: 10px; */
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.delete {
+  display: none;
+}
+
+.delete:not([hidden]) {
+  display: inline;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem
+}
+
+.nav-link.active {
+  color: #1A5319;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.sort-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sort-link::after {
+  content: '';
+  margin-left: 5px;
+  font-size: 0.8em;
+  display: inline-block;
+  width: 10px;
+  text-align: center;
+}
+
+.sort-link.asc::after {
+  content: '↑';
+}
+
+.sort-link.desc::after {
+  content: '↓';
+}
+
+#newPostBtn {
+    margin: 20px 0;
+    background-color: #2ecc71;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+#newPostBtn:hover {
+  background-color: #27ae60;
+}
+  
+
+#blogPost {
+    width: 50%;
+    height: 35vh;
+}
+
+#blogTitle {
+    justify-self: left;
+}
+
+.author {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  margin: 10px 0;
+  color: #666;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 150px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #80AF81;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.button:hover {
+  /* Button hover effect */
+  background-color: #1A5319; /* Darker green on hover */
+}
+
+form {
+    font-family: Libre Baskerville, serif;
+    font-size: 1rem;;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+h1 {
+    font-family: amsterdam;
+    font-size: 5.5rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 0px;
+
+}
+
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+  
+input {
+    font-size: 1.25rem;
+    font-family: Libre Baskerville, serif;
+    border-radius: 0px;
+    border: none;
+}
+
+.blog-text {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    font-family: Libre Baskerville, serif;
+    font-size: 0.75rem;
+    text-align: center;
+    height: 50px;
+    justify-self: flex-end;
+    margin-top: 50px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+}
+
+.blogText  {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.book-description {
+    font-size: 1.2rem;
+    text-align: justify;
+    width: 100%;
+}
+
+#book-thumbnail {
+  width: 180px;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+h2 {
+    font-family: Libre Baskerville, serif;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: left;
+    width: 50%;
+}
+
+#postsList h2 {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#welcome {
+    text-align: center;
+    font-size: 3rem;
+    text-shadow: rgb(255, 252, 83, .5) 1px 0 2.5px;
+}
+
+#intro {
+    font-size: 2rem;
+    text-align: center;
+    width: 50%;
+    margin-bottom: 50px;
+    text-shadow: rgb(255, 252, 83, .5) 0.25px 0 0.5px;
+}
+
+.postList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postList h2 {
+    font-family: Libre Baskerville, serif;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: left;
+    width: 50%;
+}
+
+.postList ul {
+    width: 50%;
+    padding: 0px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    list-style: none;
+    font-family: Libre Baskerville;
+}
+
+.postLink {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color:#707070;
+}
+
+.edit-button {
+  display: flex;
+  justify-content: center;
+}
+
