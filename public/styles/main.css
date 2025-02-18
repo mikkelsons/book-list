@@ -108,7 +108,6 @@ ul {
 
 li {
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
 }
 
 li:last-child {
@@ -348,15 +347,16 @@ h2 {
 #welcome {
     text-align: center;
     font-size: 3rem;
-    text-shadow: rgb(255, 252, 83, .5) 1px 0 2.5px;
+    font-weight: 900;
+    /* text-shadow: rgb(255, 252, 83, .5) 1px 0 2.5px; */
 }
 
 #intro {
     font-size: 2rem;
+    font-weight: 400;
     text-align: center;
     width: 50%;
     margin-bottom: 50px;
-    text-shadow: rgb(255, 252, 83, .5) 0.25px 0 0.5px;
 }
 
 .postList {

@@ -63,7 +63,7 @@
       idLink.href = '/?sortField=id&sortOrder=ASC';
       if (currentSort.field === 'id') {
         if (sortingApplied) {
-          idLink.classList.add('active');
+          // idLink.classList.add('active');
           idLink.classList.add(currentSort.order.toLowerCase());
           idLink.href = `/?sortField=id&sortOrder=${currentSort.order === 'ASC' ? 'DESC' : 'ASC'}`;
         }

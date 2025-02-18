@@ -12,11 +12,11 @@ const port = 3000;
 app.set("view engine", "ejs");
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "booklist",
-  password: "123456",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 db.connect();
 
@@ -28,14 +28,22 @@ function newDate() {
   let year = date.getFullYear();
   let month = date.getMonth(); // 0-11, so add 1 for human-readable format
   let day = date.getDate();
-  return (`${month + 1}-${day}-${year}`);
-};
+  return `${month + 1}-${day}-${year}`;
+}
 
+// Use this as an example of how to format your SQL table:
 let books = [
-  { id: 1, book_title: "Moby Dick", isbn: "0143105957", book_description:"Considered by some to be the number one piece of English literature, Moby Dick tells the story of Captain Ahab's revenge against the whale who took his leg. The story is told through the point of view of Ishmael, the protagonist who decides to put out to sea on a whaling voyage to see what it is all about. He befriends an experienced Pacific islander harpooner, and the two of them ship off from Nantucket in the Peaquod.\n \n The story balances both narrative as well as philosophical musings. We even see a chapter on whale taxonomy.\n \n An excellent read, and worthy of the title 'Classic'.", date: "2-14-2025"},
+  {
+    id: 1,
+    book_title: "Moby Dick",
+    isbn: "0143105957",
+    book_description:
+      "Considered by some to be the number one piece of English literature, Moby Dick tells the story of Captain Ahab's revenge against the whale who took his leg. The story is told through the point of view of Ishmael, the protagonist who decides to put out to sea on a whaling voyage to see what it is all about. He befriends an experienced Pacific islander harpooner, and the two of them ship off from Nantucket in the Peaquod.\n \n The story balances both narrative as well as philosophical musings. We even see a chapter on whale taxonomy.\n \n An excellent read, and worthy of the title 'Classic'.",
+    date: "2-14-2025",
+  },
 ];
 
-let currentSort = { field: 'id', order: 'ASC' };
+let currentSort = { field: "id", order: "ASC" };
 let isFirstLoad = true;
 let sortingApplied = false;
 
@@ -44,32 +52,38 @@ app.get("/", async (req, res) => {
     let sortField = req.query.sortField;
     let sortOrder = req.query.sortOrder;
 
-    const validSortFields = ['book_title', 'date', 'id', 'author'];
+    const validSortFields = ["book_title", "date", "id", "author"];
     let field, order;
 
     // If the same field is selected, toggle the order
-   
-    if (isFirstLoad && !sortField && !sortOrder)  {
-      field = 'id';
-      order = 'ASC';
+
+    if (isFirstLoad && !sortField && !sortOrder) {
+      field = "id";
+      order = "ASC";
       isFirstLoad = false;
     } else {
-      field = validSortFields.includes(sortField) ? sortField : currentSort.field;
-    
+      field = validSortFields.includes(sortField)
+        ? sortField
+        : currentSort.field;
+
       if (sortField && sortField === currentSort.field) {
-        order = currentSort.order === 'ASC' ? 'DESC' : 'ASC';
+        order = currentSort.order === "ASC" ? "DESC" : "ASC";
       } else {
-        order = sortOrder ? (sortOrder.toUpperCase() === 'DESC' ? 'DESC' : 'ASC') : 'ASC';
+        order = sortOrder
+          ? sortOrder.toUpperCase() === "DESC"
+            ? "DESC"
+            : "ASC"
+          : "ASC";
       }
       sortingApplied = true;
     }
-    
-    currentSort = { field, order};
+
+    currentSort = { field, order };
 
     const result = await db.query(
       `SELECT * FROM books ORDER BY ${field} ${order}`
     );
-    res.render("index.ejs", { 
+    res.render("index.ejs", {
       books: result.rows,
       currentSort: currentSort,
       sortingApplied: sortingApplied,
@@ -92,7 +106,8 @@ app.post("/newPost", async (req, res) => {
   const author = req.body.author;
 
   try {
-    await db.query("INSERT INTO books (book_title, isbn, book_description, date, author) VALUES ($1, $2, $3, $4, $5)", 
+    await db.query(
+      "INSERT INTO books (book_title, isbn, book_description, date, author) VALUES ($1, $2, $3, $4, $5)",
       [title, isbn, content, date, author]
     );
     res.redirect("/");
@@ -103,12 +118,14 @@ app.post("/newPost", async (req, res) => {
 
 app.get("/edit/:id", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM books WHERE id = $1", [req.params.id]);
+    const result = await db.query("SELECT * FROM books WHERE id = $1", [
+      req.params.id,
+    ]);
     if (result.rows.length > 0) {
       res.render("modify.ejs", {
         heading: "Edit Post",
         submit: "Update Post",
-        book: result.rows[0]
+        book: result.rows[0],
       });
     } else {
       res.status(404).json({ message: "Book not found" });
@@ -127,7 +144,8 @@ app.post("/edit", async (req, res) => {
   const author = req.body.updatedAuthor;
 
   try {
-    await db.query("UPDATE books SET book_title = $1, isbn = $2, book_description = $3, author = $4 WHERE id = $5",
+    await db.query(
+      "UPDATE books SET book_title = $1, isbn = $2, book_description = $3, author = $4 WHERE id = $5",
       [book, isbn, content, author, id]
     );
     res.redirect("/");
@@ -139,7 +157,9 @@ app.post("/edit", async (req, res) => {
 
 app.post("/delete/:id", async (req, res) => {
   try {
-    const result = await db.query("DELETE FROM books WHERE id = $1", [req.params.id]);
+    const result = await db.query("DELETE FROM books WHERE id = $1", [
+      req.params.id,
+    ]);
     if (result.rowCount === 0) {
       res.status(404).json({ message: "Book not found" });
     } else {
@@ -152,5 +172,5 @@ app.post("/delete/:id", async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });  
+  console.log(`Server running on port ${port}`);
+});
