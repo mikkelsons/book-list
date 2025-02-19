@@ -1,53 +1,52 @@
 body {
-    background-color: #D6EFD8;
-    background-image: url("../images/brown-classic-books.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    min-height: 150vh;
+  background-color: #d6efd8;
+  background-image: url("../images/brown-classic-books.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  min-height: 150vh;
 }
 
 @font-face {
-    font-family: amsterdam;
-    src: url(../fonts/amsterdam-variation-3.ttf);
-  }
+  font-family: amsterdam;
+  src: url(../fonts/amsterdam-variation-3.ttf);
+}
 
 header {
-    /* background-color: rgb(98, 98, 98); */
-    width: 100%;
-    height: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  /* background-color: rgb(98, 98, 98); */
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 .container {
-    min-width: 50%;
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 20px 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-
+  min-width: 50%;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
 .nav {
-    display: flex;
-    gap: 3rem;
-    justify-content: space-around;
-    list-style: none;
-    font-family: Libre Baskerville;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-around;
+  list-style: none;
+  font-family: Libre Baskerville;
 }
 
 p,
@@ -149,11 +148,11 @@ a.edit {
 .nav-link {
   text-decoration: none;
   color: black;
-  font-size: 1.2rem
+  font-size: 1.2rem;
 }
 
 .nav-link.active {
-  color: #1A5319;
+  color: #1a5319;
   font-weight: 700;
   text-decoration: underline;
 }
@@ -165,7 +164,7 @@ a.edit {
 }
 
 .sort-link::after {
-  content: '';
+  content: "";
   margin-left: 5px;
   font-size: 0.8em;
   display: inline-block;
@@ -174,43 +173,19 @@ a.edit {
 }
 
 .sort-link.asc::after {
-  content: '↑';
+  content: "↑";
 }
 
 .sort-link.desc::after {
-  content: '↓';
-}
-
-#newPostBtn {
-    margin: 20px 0;
-    background-color: #2ecc71;
-    padding: 10px 15px;
-    font-size: 1em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: none;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-  }
-  
-#newPostBtn:hover {
-  background-color: #27ae60;
-}
-  
-
-#blogPost {
-    width: 50%;
-    height: 35vh;
+  content: "↓";
 }
 
 #blogTitle {
-    justify-self: left;
+  justify-self: left;
 }
 
 .author {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   font-style: italic;
   margin: 10px 0;
   color: #666;
@@ -220,55 +195,54 @@ a.edit {
 }
 
 .button {
-    display: inline-block;
-    padding: 10px 20px;
-    width: 150px;
-    text-decoration: none;
-    text-align: center;
-    background-color: #80AF81;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  display: inline-block;
+  padding: 10px 20px;
+  width: 150px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #80af81;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
-  
+
 .button:hover {
   /* Button hover effect */
-  background-color: #1A5319; /* Darker green on hover */
+  background-color: #1a5319; /* Darker green on hover */
 }
 
 form {
-    font-family: Libre Baskerville, serif;
-    font-size: 1rem;;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  font-family: Libre Baskerville, serif;
+  font-size: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 h1 {
-    font-family: amsterdam;
-    font-size: 5.5rem;
-    font-weight: 400;
-    text-align: center;
-    margin: 0px;
-
+  font-family: amsterdam;
+  font-size: 5.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 0px;
 }
 
 .libre-baskerville-regular {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .libre-baskerville-bold {
   font-family: "Libre Baskerville", serif;
@@ -281,46 +255,34 @@ h1 {
   font-weight: 400;
   font-style: italic;
 }
-  
-input {
-    font-size: 1.25rem;
-    font-family: Libre Baskerville, serif;
-    border-radius: 0px;
-    border: none;
-}
 
-.blog-text {
-    display: flex;
-    justify-content: center;
+input {
+  font-size: 1.25rem;
+  font-family: Libre Baskerville, serif;
+  border-radius: 0px;
+  border: none;
 }
 
 footer {
-    font-family: Libre Baskerville, serif;
-    font-size: 0.75rem;
-    text-align: center;
-    height: 50px;
-    justify-self: flex-end;
-    margin-top: 50px;
+  font-family: Libre Baskerville, serif;
+  font-size: 0.75rem;
+  text-align: center;
+  height: 50px;
+  justify-self: flex-end;
+  margin-top: 50px;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-
-}
-
-.blogText  {
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .book-description {
-    font-size: 1.2rem;
-    text-align: justify;
-    width: 100%;
+  font-size: 1.2rem;
+  text-align: justify;
+  width: 100%;
 }
 
 #book-thumbnail {
@@ -332,11 +294,11 @@ align-items: center;
 }
 
 h2 {
-    font-family: Libre Baskerville, serif;
-    font-weight: 700;
-    font-size: 2rem;
-    text-align: left;
-    width: 50%;
+  font-family: Libre Baskerville, serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: left;
+  width: 50%;
 }
 
 #postsList h2 {
@@ -345,56 +307,55 @@ h2 {
 }
 
 #welcome {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 900;
-    /* text-shadow: rgb(255, 252, 83, .5) 1px 0 2.5px; */
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  /* text-shadow: rgb(255, 252, 83, .5) 1px 0 2.5px; */
 }
 
 #intro {
-    font-size: 2rem;
-    font-weight: 400;
-    text-align: center;
-    width: 50%;
-    margin-bottom: 50px;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  width: 50%;
+  margin-bottom: 50px;
 }
 
 .postList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .postList h2 {
-    font-family: Libre Baskerville, serif;
-    font-weight: 700;
-    font-size: 2rem;
-    text-align: left;
-    width: 50%;
+  font-family: Libre Baskerville, serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: left;
+  width: 50%;
 }
 
 .postList ul {
-    width: 50%;
-    padding: 0px;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    list-style: none;
-    font-family: Libre Baskerville;
+  width: 50%;
+  padding: 0px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  list-style: none;
+  font-family: Libre Baskerville;
 }
 
 .postLink {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 a:hover {
-    color:#707070;
+  color: #707070;
 }
 
 .edit-button {
   display: flex;
   justify-content: center;
 }
-

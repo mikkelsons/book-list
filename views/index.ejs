@@ -11,28 +11,30 @@
   <div class="container">
     <ul id="postsList">
       <% books.forEach(book => { %>
-        <li>
-          <div id="book-thumbnail">
-            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="">
-          </div> 
-          <h2>
-            <%= book.book_title %>
-          </h2>
-          <p class="author">
-            by <%= book.author || 'Unknown Author' %>
-          </p>
-          <small>
-            <%= book.date %>
-          </small>
-          <p class="book-description">
-            <%- book.book_description.replace(/\n/g, '<br>') %>             
-          </p>
-          <a class="edit" href="/edit/<%= book.id %>" hidden="true">Edit</a>
-          <form action="/delete/<%= book.id %>" method="POST" hidden class="delete" 
-            onsubmit="return confirm('Are you sure you want to delete <%= book.book_title %>?');">
-            <button type="submit" class="delete-button">Delete</button>
-          </form>         
-        </li>
+      <li>
+        <div id="book-thumbnail">
+          <img
+            src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg"
+            alt=""
+          />
+        </div>
+        <h2><%= book.book_title %></h2>
+        <p class="author">by <%= book.author || 'Unknown Author' %></p>
+        <small> <%= book.date %> </small>
+        <p class="book-description">
+          <%- book.book_description.replace(/\n/g, '<br />') %>
+        </p>
+        <a class="edit" href="/edit/<%= book.id %>" hidden="true">Edit</a>
+        <form
+          action="/delete/<%= book.id %>"
+          method="POST"
+          hidden
+          class="delete"
+          onsubmit="return confirm('Are you sure you want to delete <%= book.book_title %>?');"
+        >
+          <button type="submit" class="delete-button">Delete</button>
+        </form>
+      </li>
       <% }); %>
     </ul>
   </div>
@@ -77,7 +79,7 @@
     sortLinks.forEach(link => {
       const field = link.dataset.field;
       link.classList.remove('active', 'asc', 'desc');
-      
+
       if (!link.dataset.originalText) {
         link.dataset.originalText = link.textContent.trim();
       }
